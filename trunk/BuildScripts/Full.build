@@ -3,7 +3,7 @@
 	
 	<property name="build.configuration" value="Release" />
 	<property name="build.solutionfile" value="mite.net.sln"/>
-	
+	<property name="nant.settings.currentframework" value="net-3.5" />
 	<property name="build.revision" value="0" overwrite="true"/>
 
 	<property name="output.dir" value="Output" />
