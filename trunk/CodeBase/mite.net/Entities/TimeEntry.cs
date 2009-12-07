@@ -101,5 +101,7 @@ namespace Mite
             get;
             set;
         }
+
+        public bool Locked { get; set; }
     }
 }

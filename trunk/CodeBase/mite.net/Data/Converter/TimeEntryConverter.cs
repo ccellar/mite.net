@@ -24,6 +24,7 @@ namespace Mite
             xmlWriter.WriteElementString("note", item.Note);
             xmlWriter.WriteElementString("revenue", item.Revenue.ToString(CultureInfo.InvariantCulture));
             xmlWriter.WriteElementString("minutes", item.Revenue.ToString(CultureInfo.InvariantCulture));
+            xmlWriter.WriteElementString("locked", item.Locked.ToString(CultureInfo.InvariantCulture));
 
             if ( item.User != null )
             {
@@ -71,7 +72,8 @@ namespace Mite
                 ProjectId = xmlDocument.SelectSingleNode("/time-entry/project-id").InnerText,
                 ServiceId = xmlDocument.SelectSingleNode("/time-entry/service-id").InnerText,
                 UserId = xmlDocument.SelectSingleNode("/time-entry/user-id").InnerText,
-                Date = DateTime.Parse(xmlDocument.SelectSingleNode("/time-entry/date-at").InnerText, CultureInfo.InvariantCulture)
+                Date = DateTime.Parse(xmlDocument.SelectSingleNode("/time-entry/date-at").InnerText, CultureInfo.InvariantCulture),
+                Locked = bool.Parse(xmlDocument.SelectSingleNode("/time-entry/locked").InnerText)
             };
 
             float revenue = 0;
