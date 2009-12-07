@@ -55,16 +55,6 @@ namespace Mite
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="User"/> is restricted.
-        /// </summary>
-        /// <value><c>true</c> if restricted; otherwise, <c>false</c>.</value>
-        public bool Restricted
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// Gets or sets the date on which this <see cref="User"/> was created.
         /// </summary>
         /// <value>The createdon.</value>
@@ -83,6 +73,12 @@ namespace Mite
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets or sets the role of the user.
+        /// </summary>
+        /// <value>The role.</value>
+        public Role Role { get; set; }
 
     }
 }
