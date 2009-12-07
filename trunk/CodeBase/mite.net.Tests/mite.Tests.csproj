@@ -56,6 +56,7 @@
     <Compile Include="ProjectProxyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimerConverterTests.cs" />
+    <Compile Include="UserConverterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mite.net\mite.csproj">
