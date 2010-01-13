@@ -24,6 +24,11 @@ namespace Mite
         {
             string result = WebAdapter.SendPutRequest(string.Format(CultureInfo.InvariantCulture,"time_entries/{0}.xml", item.Id), Converter.Convert(item));
 
+            if (string.IsNullOrEmpty(result.Trim()))
+            {
+                return item;
+            }
+
             return Converter.Convert(result);
         }
 
