@@ -23,7 +23,11 @@ namespace Mite
             xmlWriter.WriteStartElement("project");
 
             xmlWriter.WriteElementString("name", item.Name);
-            xmlWriter.WriteElementString("note", item.Note);
+            
+            if (!string.IsNullOrEmpty(item.Note))
+            {
+                xmlWriter.WriteElementString("note", item.Note); 
+            }
 
             xmlWriter.WriteElementString("budget", item.Budget.ToString(CultureInfo.InvariantCulture));
 
@@ -49,6 +53,8 @@ namespace Mite
                 xmlWriter.WriteElementString("updated-at", item.UpdatedOn.ToString(CultureInfo.InvariantCulture));
             }
 
+            xmlWriter.WriteElementString("budget-type", item.BudgetType.ToString());
+
             xmlWriter.WriteEndElement();
 
             xmlWriter.Close();
@@ -61,17 +67,22 @@ namespace Mite
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.LoadXml(data);
 
-            ProjectProxy project = new ProjectProxy
+            ProjectProxy project = new ProjectProxy();
+
+            project.Id = int.Parse(xmlDocument.SelectSingleNode("/project/id").InnerText, CultureInfo.InvariantCulture);
+            project.Archived = bool.Parse(xmlDocument.SelectSingleNode("/project/archived").InnerText);
+            project.Budget = int.Parse(xmlDocument.SelectSingleNode("/project/budget").InnerText, CultureInfo.InvariantCulture);
+            project.CreatedOn = DateTime.Parse(xmlDocument.SelectSingleNode("/project/created-at").InnerText, CultureInfo.InvariantCulture);
+            project.Note = xmlDocument.SelectSingleNode("/project/note").InnerText;
+            project.UpdatedOn = DateTime.Parse(xmlDocument.SelectSingleNode("/project/updated-at").InnerText, CultureInfo.InvariantCulture);
+            project.CustomerId = xmlDocument.SelectSingleNode("/project/customer-id").InnerText;
+            project.Name = xmlDocument.SelectSingleNode("/project/name").InnerText;
+
+            string budgetType = xmlDocument.SelectSingleNode("/project/budget-type").InnerText;
+            if (!string.IsNullOrEmpty(budgetType))
             {
-                Id = int.Parse(xmlDocument.SelectSingleNode("/project/id").InnerText, CultureInfo.InvariantCulture),
-                Archived = bool.Parse(xmlDocument.SelectSingleNode("/project/archived").InnerText),
-                Budget = int.Parse(xmlDocument.SelectSingleNode("/project/budget").InnerText, CultureInfo.InvariantCulture),
-                CreatedOn = DateTime.Parse(xmlDocument.SelectSingleNode("/project/created-at").InnerText, CultureInfo.InvariantCulture),
-                Name = xmlDocument.SelectSingleNode("/project/name").InnerText,
-                Note = xmlDocument.SelectSingleNode("/project/note").InnerText,
-                UpdatedOn = DateTime.Parse(xmlDocument.SelectSingleNode("/project/updated-at").InnerText, CultureInfo.InvariantCulture),
-                CustomerId = xmlDocument.SelectSingleNode("/project/customer-id").InnerText
-            };
+                project.BudgetType = (BudgetType) Enum.Parse(typeof (BudgetType), budgetType, true);
+            }
 
             return project;
         }

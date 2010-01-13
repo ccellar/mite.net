@@ -50,6 +50,7 @@
     <Compile Include="Data\Mapper\TimerMapper.cs" />
     <Compile Include="Data\Query\Condition.cs" />
     <Compile Include="Data\Query\ConditionOperator.cs" />
+    <Compile Include="Entities\BudgetType.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="MiteConfiguration.cs" />
     <Compile Include="Data\BaseDataContext.cs" />
