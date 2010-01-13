@@ -4,6 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using System.Diagnostics;
+using System.Net;
 
 namespace Mite
 {
@@ -37,7 +38,21 @@ namespace Mite
 
                     IDataMapper<Customer> mapper = MiteDataMapperFactory.GetMapper<Customer>();
 
-                    base.Customer = mapper.GetById(CustomerId);
+                    try
+                    {
+                        base.Customer = mapper.GetById(CustomerId);
+                    }
+                    catch (WebException webException)
+                    {
+                        HttpWebResponse response = (HttpWebResponse) webException.Response;
+                        
+                        if (response.StatusCode == HttpStatusCode.NotFound)
+                        {
+                            base.Customer = null;
+                        }else
+
+                        throw;
+                    }
 
                     _customerLoaded = true;
                 }
