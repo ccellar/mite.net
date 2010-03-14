@@ -5,7 +5,9 @@
 //-----------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Xml;
 
@@ -13,31 +15,38 @@ namespace Mite
 {
     internal class CustomerConverter : IEntityConverter<Customer>
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase")]
+        [SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase")]
         public string Convert(Customer item)
         {
-  
-            StringBuilder stringBuilder = new StringBuilder();
-            XmlWriter xmlWriter = XmlWriter.Create(stringBuilder);
+            MemoryStream memoryStream = new MemoryStream();
+
+            XmlWriterSettings xmlWriterSettings = new XmlWriterSettings
+            {
+                Encoding = new UTF8Encoding(false),
+                ConformanceLevel = ConformanceLevel.Document,
+                Indent = true
+            };
+
+            XmlWriter xmlWriter = XmlWriter.Create(memoryStream, xmlWriterSettings);
 
             xmlWriter.WriteStartElement("customer");
 
             xmlWriter.WriteElementString("name", item.Name);
             xmlWriter.WriteElementString("note", item.Note);
 
-            if ( item.Id != 0 )
+            if (item.Id != 0)
             {
                 xmlWriter.WriteElementString("id", item.Id.ToString(CultureInfo.InvariantCulture));
             }
 
             xmlWriter.WriteElementString("archived", item.Archived.ToString(CultureInfo.InvariantCulture).ToLowerInvariant());
 
-            if ( item.CreatedOn != DateTime.MinValue )
+            if (item.CreatedOn != DateTime.MinValue)
             {
                 xmlWriter.WriteElementString("created-at", item.CreatedOn.ToString());
             }
 
-            if ( item.UpdatedOn != DateTime.MinValue )
+            if (item.UpdatedOn != DateTime.MinValue)
             {
                 xmlWriter.WriteElementString("updated-at", item.UpdatedOn.ToString());
             }
@@ -46,7 +55,7 @@ namespace Mite
 
             xmlWriter.Close();
 
-            return stringBuilder.ToString();
+            return Encoding.UTF8.GetString(memoryStream.ToArray());
         }
 
         public Customer Convert(string data)
@@ -76,7 +85,7 @@ namespace Mite
 
             IList<Customer> customers = new List<Customer>(nodeList.Count);
 
-            foreach ( XmlNode node in nodeList )
+            foreach (XmlNode node in nodeList)
             {
                 customers.Add(Convert(node.OuterXml));
             }

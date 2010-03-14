@@ -41,7 +41,9 @@ namespace Mite
 
         public IList<Timer> GetAll()
         {
-            throw new NotSupportedException();
+            string result = WebAdapter.SendGetRequest("tracker.xml");
+           
+            return Converter.ConvertToList(result);
         }
 
         public IList<Timer> GetByCriteria(QueryExpression queryExpression)

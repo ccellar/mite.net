@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Xml;
 
@@ -16,8 +17,16 @@ namespace Mite
         public string Convert(TimeEntry item)
         {
 
-            StringBuilder stringBuilder = new StringBuilder();
-            XmlWriter xmlWriter = XmlWriter.Create(stringBuilder);
+            MemoryStream memoryStream = new MemoryStream();
+
+            XmlWriterSettings xmlWriterSettings = new XmlWriterSettings
+            {
+                Encoding = new UTF8Encoding(false),
+                ConformanceLevel = ConformanceLevel.Document,
+                Indent = true
+            };
+
+            XmlWriter xmlWriter = XmlWriter.Create(memoryStream, xmlWriterSettings);
 
             xmlWriter.WriteStartElement("time-entry");
 
@@ -55,7 +64,7 @@ namespace Mite
 
             xmlWriter.Close();
 
-            return stringBuilder.ToString();
+            return Encoding.UTF8.GetString(memoryStream.ToArray());
         }
 
         public TimeEntry Convert(string data)
@@ -76,13 +85,13 @@ namespace Mite
                 Locked = bool.Parse(xmlDocument.SelectSingleNode("/time-entry/locked").InnerText)
             };
 
-            float revenue = 0;
+            float revenue;
 
             float.TryParse(xmlDocument.SelectSingleNode("/time-entry/revenue").InnerText, out revenue);
 
             timeEntry.Revenue = revenue;
 
-            int minutes = 0;
+            int minutes;
 
             int.TryParse(xmlDocument.SelectSingleNode("/time-entry/minutes").InnerText, out minutes);
 

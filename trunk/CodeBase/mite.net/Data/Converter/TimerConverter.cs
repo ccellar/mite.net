@@ -24,7 +24,7 @@ namespace Mite
 
             Timer timer = new Timer();
 
-            if ( xmlDocument.SelectSingleNode("/tracker/tracking-time-entry") != null )
+            if (xmlDocument.SelectSingleNode("/tracker/tracking-time-entry") != null)
             {
                 timer.RunningTimer = new RunningTimer
                 {
@@ -42,17 +42,17 @@ namespace Mite
                             InnerText, CultureInfo.InvariantCulture)
                 };
             }
-            if ( xmlDocument.SelectSingleNode("/tracker/stopped-time-entry") != null )
+            if (xmlDocument.SelectSingleNode("/tracker/stopped-time-entry") != null)
             {
                 timer.StoppedTimer = new StoppedTimer
-                                         {
-                                             Id = int.Parse(
-                                                 xmlDocument.SelectSingleNode("/tracker/stopped-time-entry/id").
-                                                     InnerText, CultureInfo.InvariantCulture),
-                                             Minutes = int.Parse(
-                                                 xmlDocument.SelectSingleNode("/tracker/stopped-time-entry/minutes").
-                                                     InnerText, CultureInfo.InvariantCulture)
-                                         };
+                {
+                    Id = int.Parse(
+                        xmlDocument.SelectSingleNode("/tracker/stopped-time-entry/id").
+                            InnerText, CultureInfo.InvariantCulture),
+                    Minutes = int.Parse(
+                        xmlDocument.SelectSingleNode("/tracker/stopped-time-entry/minutes").
+                            InnerText, CultureInfo.InvariantCulture)
+                };
             }
 
             return timer;
@@ -60,7 +60,25 @@ namespace Mite
 
         public IList<Timer> ConvertToList(string data)
         {
-            throw new NotImplementedException();
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(data);
+
+            XmlNodeList nodeList = xmlDocument.SelectNodes(@"/tracker");
+
+            if (nodeList != null)
+            {
+
+                IList<Timer> timers = new List<Timer>(nodeList.Count);
+
+                foreach (XmlNode node in nodeList)
+                {
+                    timers.Add(Convert(node.OuterXml));
+                }
+
+                return timers;
+            }
+
+            return null;
         }
     }
 }

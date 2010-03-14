@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Xml;
 
@@ -17,8 +18,16 @@ namespace Mite
         [SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase")]
         public string Convert(Project item)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            XmlWriter xmlWriter = XmlWriter.Create(stringBuilder);
+            MemoryStream memoryStream = new MemoryStream();
+
+            XmlWriterSettings xmlWriterSettings = new XmlWriterSettings
+            {
+                Encoding = new UTF8Encoding(false),
+                ConformanceLevel = ConformanceLevel.Document,
+                Indent = true
+            };
+
+            XmlWriter xmlWriter = XmlWriter.Create(memoryStream, xmlWriterSettings);
 
             xmlWriter.WriteStartElement("project");
 
@@ -59,7 +68,7 @@ namespace Mite
 
             xmlWriter.Close();
 
-            return stringBuilder.ToString();
+            return Encoding.UTF8.GetString(memoryStream.ToArray());
         }
 
         public Project Convert(string data)
