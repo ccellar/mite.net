@@ -14,6 +14,10 @@ namespace Mite
     [DebuggerDisplay("{Name}")]
     public class Project : DomainObject
     {
+        ///<summary>
+        /// Gets or sets the type of budget.
+        ///</summary>
+        /// <value>The budget type.</value>
         public BudgetType BudgetType
         {
             get; 
