@@ -83,7 +83,7 @@ namespace Mite
                 if ( string.IsNullOrEmpty(_userAgent) )
                 {
                     string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-                    string product = "mite.net - connector";
+                    string product = "mite.net";
                     string host = Environment.OSVersion.VersionString;
 
                     _userAgent = string.Format(CultureInfo.InvariantCulture, "{0}/{1} ({2})", product, version, host);
