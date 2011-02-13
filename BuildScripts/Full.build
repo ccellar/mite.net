@@ -3,12 +3,14 @@
 	
 	<property name="build.configuration" value="Release" />
 	<property name="build.solutionfile" value="mite.net.sln"/>
+	<property name="build.nuspec" value="BuildScripts\mite.net.nuspec" />
 	<property name="nant.settings.currentframework" value="net-3.5" />
-	<property name="build.revision" value="0" overwrite="true"/>
+	<property name="build.revision" value="0" overwrite="true"/>  
 
 	<property name="output.dir" value="Output" />
 	<property name="output.working" value="${output.dir}\Working" />
 	<property name="output.bin" value="${output.dir}\bin" />
+	<property name="output.nuget" value="${output.dir}\nuget" />
 	<property name="output.reports" value="${output.dir}\reports" />
 	
 	<target name="init.cleanup">
@@ -65,27 +67,17 @@
 			</test>
 		</nunit2>
 	</target>
-	
-	<target name="test.moma" depends="test.unit-testing">
-				
-		<foreach item="File" property="assembly">
-			<in>
-				<items basedir="${output.bin}">
-				   <include name="mite.**.dll" />
-				   <exclude name="*.Tests.dll" />
-				</items>
-			</in>
-			<do>
-				
-				<exec program="BuildTools\moma\MoMA.exe">
-					<arg value="--nogui"/>	
-					<arg value="&quot;${assembly}&quot;" />		
-					<arg line="--out &quot;${output.reports}\${assembly}.html&quot;" />
-				</exec>
-				
-			</do>
-		</foreach>
-		
+
+	<target name="finalize.clean" depends="test.unit-testing">
+		<delete dir="${output.working}" />
+	</target>
+
+	<target name="finalize.build-nuget" depends="finalize.clean">
+    <mkdir dir="${output.nuget}" />
+		<exec program="BuildTools\nuget\nuget.exe">
+			<arg line="pack ${build.nuspec}"/>
+			<arg line="-o ${output.nuget}"/>
+		</exec>
 	</target>
 	
 </project>

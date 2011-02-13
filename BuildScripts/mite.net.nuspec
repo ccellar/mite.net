@@ -8,6 +8,7 @@
     <description>A .NET library for interacting with the RESTful API of mite, a sleek time tracking webapp.</description>
   </metadata>
   <files>
-    <file src="bin\Debug\mite.dll" target="lib" />
+    <file src="..\Output\bin\mite.dll" target="lib" />
+    <file src="..\Output\bin\mite.xml" target="lib" />
   </files>
 </package>
