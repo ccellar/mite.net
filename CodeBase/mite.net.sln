@@ -1,14 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mite", "mite.net\mite.csproj", "{E475C05B-5EF7-494A-ACD4-5353CCA23856}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mite.Tests", "mite.net.Tests\mite.Tests.csproj", "{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{095FE83D-C522-4D4E-B863-5CE44E50B474}"
 	ProjectSection(SolutionItems) = preProject
 		..\BuildScripts\Full.build = ..\BuildScripts\Full.build
+		..\BuildScripts\mite.net.nuspec = ..\BuildScripts\mite.net.nuspec
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mite", "mite.net\mite.csproj", "{E475C05B-5EF7-494A-ACD4-5353CCA23856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mite.Tests", "mite.net.Tests\mite.Tests.csproj", "{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
