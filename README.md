@@ -8,9 +8,9 @@ A .NET library for interacting with the [RESTful API](http://mite.yo.lk/en/api) 
   {
     Customer customer = new Customer();
     customer.Name = "Myself";
-
+    
     customer = context.Create(customer);
-
+      
     Project project = new Project();
     project.Name = "mite.net";
     project.Customer = customer;
