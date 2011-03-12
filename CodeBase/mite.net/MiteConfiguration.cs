@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 using System;
 using System.Configuration;
+using System.Net;
 
 namespace Mite
 {
@@ -79,6 +80,12 @@ namespace Mite
                     throw new ArgumentException("Invalid uri scheme was specified", "uri");
             }
         }
+
+        /// <summary>
+        /// Gets or sets the proxy.
+        /// </summary>
+        /// <value>The proxy.</value>
+        public IWebProxy Proxy { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MiteConfiguration"/> class.

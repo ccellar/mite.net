@@ -56,6 +56,11 @@ namespace Mite
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
 
+            if (MiteConfiguration.CurrentConfiguration.Proxy != null)
+            {
+                request.Proxy = MiteConfiguration.CurrentConfiguration.Proxy;
+            }
+
             request.UserAgent = UserAgent;
 
             if ( !string.IsNullOrEmpty(MiteConfiguration.CurrentConfiguration.ApiKey) )
