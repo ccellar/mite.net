@@ -32,7 +32,7 @@ namespace Mite
 
             xmlWriter.WriteElementString("note", item.Note);
             xmlWriter.WriteElementString("revenue", item.Revenue.ToString(CultureInfo.InvariantCulture));
-            xmlWriter.WriteElementString("minutes", item.Revenue.ToString(CultureInfo.InvariantCulture));
+            xmlWriter.WriteElementString("minutes", item.Minutes.ToString(CultureInfo.InvariantCulture));
             xmlWriter.WriteElementString("locked", item.Locked.ToString(CultureInfo.InvariantCulture));
 
             if ( item.User != null )
