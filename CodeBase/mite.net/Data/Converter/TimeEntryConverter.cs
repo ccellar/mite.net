@@ -40,6 +40,11 @@ namespace Mite
                 xmlWriter.WriteElementString("user-id", item.User.Id.ToString(CultureInfo.InvariantCulture));
             }
 
+            if (item.Project != null)
+            {
+                xmlWriter.WriteElementString("project-id", item.Project.Id.ToString(CultureInfo.InvariantCulture));
+            }
+
             if ( item.Service != null )
             {
                 xmlWriter.WriteElementString("service-id", item.Service.Id.ToString(CultureInfo.InvariantCulture));
