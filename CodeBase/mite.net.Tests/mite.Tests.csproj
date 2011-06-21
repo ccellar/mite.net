@@ -76,6 +76,7 @@
     <Compile Include="ProjectConverterTests.cs" />
     <Compile Include="ProjectProxyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeEntryConverterTests.cs" />
     <Compile Include="TimerConverterTests.cs" />
     <Compile Include="UserConverterTests.cs" />
   </ItemGroup>
