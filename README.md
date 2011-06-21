@@ -6,14 +6,14 @@ A .NET library for interacting with the [RESTful API](http://mite.yo.lk/en/api) 
   
     using (IDataContext context = new MiteDataContext(miteConfiguration))
     {
-    Customer customer = new Customer();
-    customer.Name = "Myself";
+      Customer customer = new Customer();
+      customer.Name = "Myself";
     
-    customer = context.Create(customer);
+      customer = context.Create(customer);
     
-    Project project = new Project();
-    project.Name = "mite.net";
-    project.Customer = customer;
+      Project project = new Project();
+      project.Name = "mite.net";
+      project.Customer = customer;
     
-    context.Create(project);
+      context.Create(project);
     }  
