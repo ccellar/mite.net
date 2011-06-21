@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
@@ -32,7 +33,28 @@ namespace Mite.Tests
 
             var timeEntry = new TimeEntryConverter().Convert(input);
 
-            Assert.That(timeEntry, Is.InstanceOfType(typeof (TimeEntry)));
+            Assert.That(timeEntry, Is.InstanceOfType(typeof(TimeEntry)));
+        }
+
+        [Test]
+        public void TimeEntry_Should_Be_Converted_Into_Xml_String()
+        {
+            //Todo create full test
+
+            var timeEntry = new TimeEntry
+            {
+                Project = new Project { Id = 1 },
+                CreatedOn = DateTime.UtcNow,
+                Note = "Test",
+                Revenue = 100,
+                Minutes = 200
+            };
+
+            var result = new TimeEntryConverter().Convert(timeEntry);
+
+            Assert.IsTrue(result.Contains("project-id"));
+            Assert.IsTrue(result.Contains(@"<revenue>100</revenue>"));
+            Assert.IsTrue(result.Contains(@"<minutes>200</minutes>"));
         }
     }
 }
