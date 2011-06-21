@@ -1,8 +1,9 @@
 using System;
+using Mite;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
-namespace Mite.Tests
+namespace mite.Tests.Converter
 {
     [TestFixture]
     public class TimeEntryConverterTests

@@ -68,17 +68,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationTests.cs" />
-    <Compile Include="CustomerConverterTests.cs" />
+    <Compile Include="Converter\CustomerConverterTests.cs" />
     <Compile Include="MiteDataContextTests.cs" />
     <Compile Include="MiteDataFactoryTests.cs" />
     <Compile Include="MiteErrorTests.cs" />
     <Compile Include="MiteExceptionTests.cs" />
-    <Compile Include="ProjectConverterTests.cs" />
+    <Compile Include="Converter\ProjectConverterTests.cs" />
     <Compile Include="ProjectProxyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimeEntryConverterTests.cs" />
-    <Compile Include="TimerConverterTests.cs" />
-    <Compile Include="UserConverterTests.cs" />
+    <Compile Include="Converter\TimeEntryConverterTests.cs" />
+    <Compile Include="Converter\TimerConverterTests.cs" />
+    <Compile Include="Converter\UserConverterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mite.net\mite.csproj">
