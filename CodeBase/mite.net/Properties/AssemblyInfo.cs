@@ -16,7 +16,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("langalaxy.de - Christoph Keller")]
 [assembly: AssemblyProduct("mite.net api")]
-[assembly: AssemblyCopyright("Copyright © 2009-2010")]
+[assembly: AssemblyCopyright("Copyright © 2009-2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
