@@ -74,6 +74,7 @@ namespace Mite
             switch ( uri.Scheme.ToUpperInvariant() )
             {
                 case "HTTP":
+                    throw new ArgumentException("mite is not accepting HTTP requests any more. See http://blog.yo.lk/en/2012/02/21/securing-mite-https-only", "uri");
                 case "HTTPS":
                     break;
                 default:

@@ -10,7 +10,7 @@ namespace Mite.Tests
         [Test]
         public void ConstructorShouldSetConfiguration()
         {
-            MiteConfiguration miteConfiguration = new MiteConfiguration(new Uri("http://test"),"sdfsdf" );
+            MiteConfiguration miteConfiguration = new MiteConfiguration(new Uri("https://test"),"sdfsdf" );
 
             IDataContext miteDataContext = new MiteDataContext(miteConfiguration);
 
