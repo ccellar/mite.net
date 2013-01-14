@@ -72,8 +72,15 @@ namespace Mite
             {
                 if ( !_projectLoaded )
                 {
-                    IDataMapper<Project> mapper = MiteDataMapperFactory.GetMapper<Project>();
-                    base.Project = mapper.GetById(ProjectId);
+                    if (ProjectId == null || (ProjectId as string) == string.Empty)
+                    {
+                        base.Project = null;
+                    }
+                    else
+                    {
+                        IDataMapper<Project> mapper = MiteDataMapperFactory.GetMapper<Project>();
+                        base.Project = mapper.GetById(ProjectId);
+                    }
 
                     _projectLoaded = true;
                 }

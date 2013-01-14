@@ -46,6 +46,14 @@ namespace Mite
             return Converter.ConvertToList(result);
         }
 
+        public IList<string> CriteriaProperties
+        {
+            get
+            {
+                return new List<string>();
+            }
+        }
+
         public IList<Timer> GetByCriteria(QueryExpression queryExpression)
         {
             throw new NotSupportedException();

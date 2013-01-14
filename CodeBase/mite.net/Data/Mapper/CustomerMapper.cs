@@ -54,6 +54,13 @@ namespace Mite
             return Converter.ConvertToList(result);
         }
 
+        public IList<string> CriteriaProperties {
+            get
+            {
+                return new List<string> { "name" };
+            }
+        }
+
         public IList<Customer> GetByCriteria(QueryExpression queryExpression)
         {
             string query = new QueryTranslator(queryExpression).Translate();

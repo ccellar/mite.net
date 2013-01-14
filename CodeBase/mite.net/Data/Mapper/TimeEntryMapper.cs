@@ -51,9 +51,31 @@ namespace Mite
             return Converter.ConvertToList(result);
         }
 
+        public IList<string> CriteriaProperties {
+            get
+            {
+                return new List<string>
+                           {
+                               "customer_id",
+                               "project_id",
+                               "service_id",
+                               "user_id",
+                               "billable",
+                               "note",
+                               "at",
+                               "from", 
+                               "to",
+                               "locked"
+                           };
+            }
+        }
+
         public IList<TimeEntry> GetByCriteria(QueryExpression queryExpression)
         {
-            throw new NotImplementedException();
+            var query = new QueryTranslator(queryExpression).Translate();
+            var result = WebAdapter.SendGetRequest(string.Format(CultureInfo.InvariantCulture, "time_entries.xml{0}", query));
+
+            return Converter.ConvertToList(result);
         }
     }
 }

@@ -51,9 +51,20 @@ namespace Mite
             return Converter.ConvertToList(result);
         }
 
+        public IList<string> CriteriaProperties
+        {
+            get
+            {
+                return new List<string> { "name" };
+            }
+        }
+
         public IList<Project> GetByCriteria(QueryExpression queryExpression)
         {
-            throw new NotImplementedException();
+            var query = new QueryTranslator(queryExpression, this.CriteriaProperties).Translate();
+            var result = WebAdapter.SendGetRequest(string.Format(CultureInfo.InvariantCulture, "projects.xml{0}", query));
+
+            return Converter.ConvertToList(result);
         }     
     }
 }

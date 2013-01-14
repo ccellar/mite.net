@@ -42,6 +42,13 @@ namespace Mite
             return Converter.ConvertToList(result);
         }
 
+        public IList<string> CriteriaProperties {
+            get
+            {
+                return new List<string>();
+            }
+        }
+
         public IList<User> GetByCriteria(QueryExpression queryExpression)
         {
             throw new NotImplementedException();

@@ -46,6 +46,15 @@ namespace Mite
         /// <returns>List of items</returns>
         IList<T> GetAll();
 
+
+        /// <summary>
+        /// Gets the available criteria properties.
+        /// </summary>
+        /// <value>
+        /// The criteria properties.
+        /// </value>
+        IList<string> CriteriaProperties { get; }
+
         /// <summary>
         /// Gets all items matching the criteria.
         /// </summary>

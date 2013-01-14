@@ -49,7 +49,7 @@ namespace Mite
         /// <returns>List of itmes which matches the query</returns>
         public virtual IList<T> GetByCriteria<T>(QueryExpression queryExpression) where T : class, new()
         {
-            throw new NotImplementedException();
+            return GetDataMapper<T>().GetByCriteria(queryExpression);
         }
 
         /// <summary>
