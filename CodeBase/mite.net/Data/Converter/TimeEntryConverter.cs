@@ -30,40 +30,23 @@ namespace Mite
 
             xmlWriter.WriteStartElement("time-entry");
 
-            xmlWriter.WriteElementString("note", item.Note);
-            xmlWriter.WriteElementString("revenue", item.Revenue.ToString(CultureInfo.InvariantCulture));
+            //see http://mite.yo.lk/api/zeiten.html for supported elements
+            xmlWriter.WriteElementString("date-at", item.Date.ToString("yyyy-M-d"));
             xmlWriter.WriteElementString("minutes", item.Minutes.ToString(CultureInfo.InvariantCulture));
-            xmlWriter.WriteElementString("locked", item.Locked.ToString(CultureInfo.InvariantCulture));
-
-            if ( item.User != null )
+            xmlWriter.WriteElementString("note", item.Note);
+            if (item.User != null)
             {
                 xmlWriter.WriteElementString("user-id", item.User.Id.ToString(CultureInfo.InvariantCulture));
             }
-
             if (item.Project != null)
             {
                 xmlWriter.WriteElementString("project-id", item.Project.Id.ToString(CultureInfo.InvariantCulture));
             }
-
-            if ( item.Service != null )
+            if (item.Service != null)
             {
                 xmlWriter.WriteElementString("service-id", item.Service.Id.ToString(CultureInfo.InvariantCulture));
             }
-
-            if ( item.Id != 0 )
-            {
-                xmlWriter.WriteElementString("id", item.Id.ToString(CultureInfo.InvariantCulture));
-            }
-
-            if ( item.CreatedOn != DateTime.MinValue )
-            {
-                xmlWriter.WriteElementString("created-at", item.CreatedOn.ToString(CultureInfo.InvariantCulture));
-            }
-
-            if ( item.UpdatedOn != DateTime.MinValue )
-            {
-                xmlWriter.WriteElementString("updated-at", item.UpdatedOn.ToString(CultureInfo.InvariantCulture));
-            }
+            xmlWriter.WriteElementString("locked", item.Locked.ToString(CultureInfo.InvariantCulture));
 
             xmlWriter.WriteEndElement();
 
