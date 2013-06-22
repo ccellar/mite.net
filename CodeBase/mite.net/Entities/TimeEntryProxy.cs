@@ -18,20 +18,20 @@ namespace Mite
         private bool _serviceLoaded;
         private bool _projectLoaded;
 
-        internal object ProjectId
+        internal string ProjectId
         {
             get;
             set;
         }
 
-        internal object UserId
+        internal string UserId
         {
             get;
             set;
         }
 
 
-        internal object ServiceId
+        internal string ServiceId
         {
             get;
             set;
@@ -46,7 +46,7 @@ namespace Mite
         {
             get
             {
-                if ( !_serviceLoaded )
+                if ( !_serviceLoaded && !string.IsNullOrEmpty(ServiceId) )
                 {
                     IDataMapper<Service> mapper = MiteDataMapperFactory.GetMapper<Service>();
                     base.Service = mapper.GetById(ServiceId);
@@ -72,7 +72,7 @@ namespace Mite
             {
                 if ( !_projectLoaded )
                 {
-                    if (ProjectId == null || (ProjectId as string) == string.Empty)
+                    if (string.IsNullOrEmpty(ProjectId))
                     {
                         base.Project = null;
                     }
