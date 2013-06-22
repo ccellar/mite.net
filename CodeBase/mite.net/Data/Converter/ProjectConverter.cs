@@ -47,20 +47,20 @@ namespace Mite
                 xmlWriter.WriteElementString("customer-id", item.Customer.Id.ToString(CultureInfo.InvariantCulture));
             }
 
-            if ( item.Id != 0 )
-            {
-                xmlWriter.WriteElementString("id", item.Id.ToString(CultureInfo.InvariantCulture));
-            }
+            //if ( item.Id != 0 )
+            //{
+            //    xmlWriter.WriteElementString("id", item.Id.ToString(CultureInfo.InvariantCulture));
+            //}
 
-            if ( item.CreatedOn != DateTime.MinValue )
-            {
-                xmlWriter.WriteElementString("created-at", item.CreatedOn.ToString(CultureInfo.InvariantCulture));
-            }
+            //if ( item.CreatedOn != DateTime.MinValue )
+            //{
+            //    xmlWriter.WriteElementString("created-at", item.CreatedOn.ToString(CultureInfo.InvariantCulture));
+            //}
 
-            if ( item.UpdatedOn != DateTime.MinValue )
-            {
-                xmlWriter.WriteElementString("updated-at", item.UpdatedOn.ToString(CultureInfo.InvariantCulture));
-            }
+            //if ( item.UpdatedOn != DateTime.MinValue )
+            //{
+            //    xmlWriter.WriteElementString("updated-at", item.UpdatedOn.ToString(CultureInfo.InvariantCulture));
+            //}
 
             xmlWriter.WriteElementString("budget-type", item.BudgetType.ToString());
 

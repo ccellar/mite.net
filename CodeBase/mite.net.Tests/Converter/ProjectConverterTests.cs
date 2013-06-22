@@ -30,9 +30,9 @@ namespace mite.Tests.Converter
 
             xmlDocument.LoadXml(xml);
 
-            string value = xmlDocument.SelectSingleNode("/project/id").InnerText;
+            string value = xmlDocument.SelectSingleNode("/project/name").InnerText;
 
-            Assert.That(value, Is.EqualTo(project.Id.ToString(CultureInfo.InvariantCulture)));
+            Assert.That(value, Is.EqualTo(project.Name.ToString(CultureInfo.InvariantCulture)));
         }
 
         [Test]
