@@ -39,21 +39,6 @@ namespace Mite
             xmlWriter.WriteElementString("archived", item.Archived.ToString(CultureInfo.InvariantCulture).ToLowerInvariant());
             xmlWriter.WriteElementString("billable", item.Billable.ToString(CultureInfo.InvariantCulture).ToLowerInvariant());
 
-            if ( item.Id != 0 )
-            {
-                xmlWriter.WriteElementString("id", item.Id.ToString(CultureInfo.InvariantCulture));
-            }
-
-            if ( item.CreatedOn != DateTime.MinValue )
-            {
-                xmlWriter.WriteElementString("created-at", item.CreatedOn.ToString(CultureInfo.InvariantCulture));
-            }
-
-            if ( item.UpdatedOn != DateTime.MinValue )
-            {
-                xmlWriter.WriteElementString("updated-at", item.UpdatedOn.ToString(CultureInfo.InvariantCulture));
-            }
-
             xmlWriter.WriteEndElement();
 
             xmlWriter.Close();
