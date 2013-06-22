@@ -27,6 +27,11 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
-*.nupkg
-*.sln.docstates
-*.ncrunchsolution
+*_TeamCity*
+*.sln.DotSettings
+packages/*
+test/*
+build/*
+nuget/*
+Publish/*
+tools/*
