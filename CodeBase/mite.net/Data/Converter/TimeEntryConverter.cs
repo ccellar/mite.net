@@ -50,19 +50,9 @@ namespace Mite
                 xmlWriter.WriteElementString("service-id", item.Service.Id.ToString(CultureInfo.InvariantCulture));
             }
 
-            if ( item.Id != 0 )
+            if (item.Date != DateTime.MinValue)
             {
-                xmlWriter.WriteElementString("id", item.Id.ToString(CultureInfo.InvariantCulture));
-            }
-
-            if ( item.CreatedOn != DateTime.MinValue )
-            {
-                xmlWriter.WriteElementString("created-at", item.CreatedOn.ToString(CultureInfo.InvariantCulture));
-            }
-
-            if ( item.UpdatedOn != DateTime.MinValue )
-            {
-                xmlWriter.WriteElementString("updated-at", item.UpdatedOn.ToString(CultureInfo.InvariantCulture));
+                xmlWriter.WriteElementString("date-at", item.Date.ToString(CultureInfo.InvariantCulture));
             }
 
             xmlWriter.WriteEndElement();
