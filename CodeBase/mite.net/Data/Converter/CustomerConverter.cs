@@ -34,22 +34,22 @@ namespace Mite
             xmlWriter.WriteElementString("name", item.Name);
             xmlWriter.WriteElementString("note", item.Note);
 
-            if (item.Id != 0)
-            {
-                xmlWriter.WriteElementString("id", item.Id.ToString(CultureInfo.InvariantCulture));
-            }
+            //if (item.Id != 0)
+            //{
+            //    xmlWriter.WriteElementString("id", item.Id.ToString(CultureInfo.InvariantCulture));
+            //}
 
             xmlWriter.WriteElementString("archived", item.Archived.ToString(CultureInfo.InvariantCulture).ToLowerInvariant());
 
-            if (item.CreatedOn != DateTime.MinValue)
-            {
-                xmlWriter.WriteElementString("created-at", item.CreatedOn.ToString());
-            }
+            //if (item.CreatedOn != DateTime.MinValue)
+            //{
+            //    xmlWriter.WriteElementString("created-at", item.CreatedOn.ToString());
+            //}
 
-            if (item.UpdatedOn != DateTime.MinValue)
-            {
-                xmlWriter.WriteElementString("updated-at", item.UpdatedOn.ToString());
-            }
+            //if (item.UpdatedOn != DateTime.MinValue)
+            //{
+            //    xmlWriter.WriteElementString("updated-at", item.UpdatedOn.ToString());
+            //}
 
             xmlWriter.WriteEndElement();
 
