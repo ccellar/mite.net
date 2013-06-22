@@ -70,26 +70,36 @@ namespace Mite
 
         internal static MiteException CreateFromResponse(string response, Exception innerException)
         {
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.LoadXml(response);
+            MiteException miteException;
 
-            MiteException miteException = new MiteException();
-
-            XmlNodeList errorNodes = xmlDocument.SelectNodes("/errors/error");
-
-            foreach (XmlNode errorNode in errorNodes)
+            if (response.StartsWith(@"<?xml version=""1.0"" encoding=""UTF-8""?>"))
             {
-               MiteError miteError = new MiteError(errorNode.InnerText);
-               XmlAttribute propertyAttribute =  errorNode.Attributes["on"];
+                miteException = new MiteException(innerException.Message, innerException);
 
-                if (propertyAttribute != null)
+                XmlDocument xmlDocument = new XmlDocument();
+
+                xmlDocument.LoadXml(response);
+
+                XmlNodeList errorNodes = xmlDocument.SelectNodes("/errors/error");
+
+                foreach (XmlNode errorNode in errorNodes)
                 {
-                    miteError.Property = propertyAttribute.Value;
+                    MiteError miteError = new MiteError(errorNode.InnerText);
+                    XmlAttribute propertyAttribute = errorNode.Attributes["on"];
+
+                    if (propertyAttribute != null)
+                    {
+                        miteError.Property = propertyAttribute.Value;
+                    }
+
+                    miteException.Errors.Add(miteError);
                 }
-
-                miteException.Errors.Add(miteError);
             }
-
+            else
+            {
+                miteException = new MiteException(response, innerException);
+            }
+            
             return miteException;
         }
     }
