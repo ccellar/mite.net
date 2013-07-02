@@ -52,7 +52,10 @@ namespace Mite
 
             if (item.Date != DateTime.MinValue)
             {
-                xmlWriter.WriteElementString("date-at", item.Date.ToString(CultureInfo.InvariantCulture));
+                //mite requires YYYY-M-D date format for the 'date-at' parameter
+                //see http://mite.yo.lk/api/zeiten.html
+
+                xmlWriter.WriteElementString("date-at", item.Date.ToString("yyyy-M-d"));
             }
 
             xmlWriter.WriteEndElement();
@@ -76,7 +79,7 @@ namespace Mite
                 ProjectId = xmlDocument.SelectSingleNode("/time-entry/project-id").InnerText,
                 ServiceId = xmlDocument.SelectSingleNode("/time-entry/service-id").InnerText,
                 UserId = xmlDocument.SelectSingleNode("/time-entry/user-id").InnerText,
-                Date = DateTime.Parse(xmlDocument.SelectSingleNode("/time-entry/date-at").InnerText, CultureInfo.InvariantCulture),
+                Date = DateTime.ParseExact(xmlDocument.SelectSingleNode("/time-entry/date-at").InnerText, "yyyy-M-d", CultureInfo.InvariantCulture), // 'date-at' has a different date-format than the other dates
                 Locked = bool.Parse(xmlDocument.SelectSingleNode("/time-entry/locked").InnerText)
             };
 
