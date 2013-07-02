@@ -27,9 +27,9 @@ namespace mite.Tests.Converter
 
             xmlDocument.LoadXml(new CustomerConverter().Convert(customer));
 
-            string value = xmlDocument.SelectSingleNode("/customer/id").InnerText;
+            string value = xmlDocument.SelectSingleNode("/customer/name").InnerText;
 
-            Assert.That(value, Is.EqualTo(customer.Id.ToString(CultureInfo.InvariantCulture)));
+            Assert.That(value, Is.EqualTo(customer.Name.ToString(CultureInfo.InvariantCulture)));
         }
 
         [Test]

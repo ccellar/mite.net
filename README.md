@@ -2,7 +2,8 @@
 
 A .NET library for interacting with the [RESTful API](http://mite.yo.lk/en/api) of [mite](http://mite.yo.lk/en), a sleek time tracking webapp.
 ```c#
-var miteConfiguration = new MiteConfiguration(new Uri("http://{mydomain}.mite.yo.lk"), "{my-api-key}");
+var uri = new Uri("http://{mydomain}.mite.yo.lk");
+var miteConfiguration = new MiteConfiguration(uri, "{my-api-key}");
  
 using (IDataContext context = new MiteDataContext(miteConfiguration))
 {

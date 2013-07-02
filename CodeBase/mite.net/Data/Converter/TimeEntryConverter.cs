@@ -30,23 +30,30 @@ namespace Mite
 
             xmlWriter.WriteStartElement("time-entry");
 
-            //see http://mite.yo.lk/api/zeiten.html for supported elements
-            xmlWriter.WriteElementString("date-at", item.Date.ToString("yyyy-M-d"));
-            xmlWriter.WriteElementString("minutes", item.Minutes.ToString(CultureInfo.InvariantCulture));
             xmlWriter.WriteElementString("note", item.Note);
-            if (item.User != null)
+            xmlWriter.WriteElementString("revenue", item.Revenue.ToString(CultureInfo.InvariantCulture));
+            xmlWriter.WriteElementString("minutes", item.Minutes.ToString(CultureInfo.InvariantCulture));
+            xmlWriter.WriteElementString("locked", item.Locked.ToString(CultureInfo.InvariantCulture));
+
+            if ( item.User != null )
             {
                 xmlWriter.WriteElementString("user-id", item.User.Id.ToString(CultureInfo.InvariantCulture));
             }
+
             if (item.Project != null)
             {
                 xmlWriter.WriteElementString("project-id", item.Project.Id.ToString(CultureInfo.InvariantCulture));
             }
-            if (item.Service != null)
+
+            if ( item.Service != null )
             {
                 xmlWriter.WriteElementString("service-id", item.Service.Id.ToString(CultureInfo.InvariantCulture));
             }
-            xmlWriter.WriteElementString("locked", item.Locked.ToString(CultureInfo.InvariantCulture));
+
+            if (item.Date != DateTime.MinValue)
+            {
+                xmlWriter.WriteElementString("date-at", item.Date.ToString(CultureInfo.InvariantCulture));
+            }
 
             xmlWriter.WriteEndElement();
 
