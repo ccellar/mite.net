@@ -49,7 +49,8 @@ namespace mite.Tests.Converter
                 CreatedOn = DateTime.UtcNow,
                 Note = "Test",
                 Revenue = 100,
-                Minutes = 200
+                Minutes = 200,
+                Date = new DateTime(2013,12,3,0,0,0,DateTimeKind.Utc)
             };
 
             var result = new TimeEntryConverter().Convert(timeEntry);
@@ -57,6 +58,7 @@ namespace mite.Tests.Converter
             Assert.IsTrue(result.Contains("project-id"));
             Assert.IsTrue(result.Contains(@"<revenue>100</revenue>"));
             Assert.IsTrue(result.Contains(@"<minutes>200</minutes>"));
+            Assert.IsTrue(result.Contains(@"<date-at>2013-12-3</date-at>"));
         }
     }
 }
