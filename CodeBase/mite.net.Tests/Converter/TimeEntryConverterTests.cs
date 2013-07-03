@@ -60,5 +60,29 @@ namespace mite.Tests.Converter
             Assert.IsTrue(result.Contains(@"<minutes>200</minutes>"));
             Assert.IsTrue(result.Contains(@"<date-at>2013-12-3</date-at>"));
         }
+
+        [Test]
+        [SetCulture("tr-TR")]
+        public void TimeEntry_Should_Be_Converted_Into_Xml_String_Turkey_Style()
+        {
+            //Todo create full test
+
+            var timeEntry = new TimeEntry
+            {
+                Project = new Project { Id = 1 },
+                CreatedOn = DateTime.UtcNow,
+                Note = "Test",
+                Revenue = 100,
+                Minutes = 200,
+                Date = new DateTime(2013, 12, 3, 0, 0, 0, DateTimeKind.Utc)
+            };
+
+            var result = new TimeEntryConverter().Convert(timeEntry);
+
+            Assert.IsTrue(result.Contains("project-id"));
+            Assert.IsTrue(result.Contains(@"<revenue>100</revenue>"));
+            Assert.IsTrue(result.Contains(@"<minutes>200</minutes>"));
+            Assert.IsTrue(result.Contains(@"<date-at>2013-12-3</date-at>"));
+        }
     }
 }
