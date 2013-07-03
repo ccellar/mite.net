@@ -14,7 +14,7 @@ namespace mite.Tests.Converter
             string input = @"<?xml version=""1.0"" encoding=""UTF-8""?>
                                 <time-entry>
                                    <id type=""integer"">5</id>
-                                   <date-at type=""date"">2009-2-12</date-at>
+                                   <date-at type=""date"">2009-2-13</date-at>
                                    <minutes type=""integer"">185</minutes>
                                    <revenue type=""float"" nil=""true""></revenue>
                                    <billable type=""boolean"">true</billable>
@@ -35,6 +35,7 @@ namespace mite.Tests.Converter
             var timeEntry = new TimeEntryConverter().Convert(input);
 
             Assert.That(timeEntry, Is.InstanceOfType(typeof(TimeEntry)));
+            Assert.AreEqual(timeEntry.Date, new DateTime(2009, 2, 13));
         }
 
         [Test]
