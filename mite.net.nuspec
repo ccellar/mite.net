@@ -13,6 +13,6 @@
     <file src="..\build\net40cp\mite.xml" target="lib\net40-client" />
     <file src="..\build\net40cp\mite.dll" target="lib\net40-client" />
     <file src="..\build\net35cp\mite.dll" target="lib\net35-client" />
-    <file src="..\build\net35cp\mite.dll" target="lib\net35-client" />
+    <file src="..\build\net35cp\mite.xml" target="lib\net35-client" />
   </files>
 </package>
