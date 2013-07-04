@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "@Build", "@Build", "{095FE83D-C522-4D4E-B863-5CE44E50B474}"
+	ProjectSection(SolutionItems) = preProject
+		00_boot.bat = 00_boot.bat
+		01_boot_and_build.bat = 01_boot_and_build.bat
+		02_build.bat = 02_build.bat
+		build.fsx = build.fsx
+		mite.net.nuspec = mite.net.nuspec
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mite", "src\lib\mite.net\mite.csproj", "{E475C05B-5EF7-494A-ACD4-5353CCA23856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mite.Tests", "src\tests\mite.net.Tests\mite.Tests.csproj", "{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		NET20-Debug|AnyCPU = NET20-Debug|AnyCPU
+		NET20-Release|AnyCPU = NET20-Release|AnyCPU
+		NET35CP-Debug|AnyCPU = NET35CP-Debug|AnyCPU
+		NET35CP-Release|AnyCPU = NET35CP-Release|AnyCPU
+		NET40CP-Debug|AnyCPU = NET40CP-Debug|AnyCPU
+		NET40CP-Release|AnyCPU = NET40CP-Release|AnyCPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET20-Debug|AnyCPU.ActiveCfg = NET20-Debug|Any CPU
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET20-Debug|AnyCPU.Build.0 = NET20-Debug|Any CPU
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET20-Release|AnyCPU.ActiveCfg = NET20-Release|Any CPU
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET20-Release|AnyCPU.Build.0 = NET20-Release|Any CPU
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET35CP-Debug|AnyCPU.ActiveCfg = NET35CP-Debug|Any CPU
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET35CP-Debug|AnyCPU.Build.0 = NET35CP-Debug|Any CPU
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET35CP-Release|AnyCPU.ActiveCfg = NET35CP-Release|Any CPU
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET35CP-Release|AnyCPU.Build.0 = NET35CP-Release|Any CPU
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET40CP-Debug|AnyCPU.ActiveCfg = NET40CP-Debug|Any CPU
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET40CP-Debug|AnyCPU.Build.0 = NET40CP-Debug|Any CPU
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET40CP-Release|AnyCPU.ActiveCfg = NET40CP-Release|Any CPU
+		{E475C05B-5EF7-494A-ACD4-5353CCA23856}.NET40CP-Release|AnyCPU.Build.0 = NET40CP-Release|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET20-Debug|AnyCPU.ActiveCfg = NET20-Debug|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET20-Debug|AnyCPU.Build.0 = NET20-Debug|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET20-Release|AnyCPU.ActiveCfg = NET20-Release|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET20-Release|AnyCPU.Build.0 = NET20-Release|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET35CP-Debug|AnyCPU.ActiveCfg = NET35CP-Debug|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET35CP-Debug|AnyCPU.Build.0 = NET35CP-Debug|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET35CP-Release|AnyCPU.ActiveCfg = NET35CP-Release|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET35CP-Release|AnyCPU.Build.0 = NET35CP-Release|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET40CP-Debug|AnyCPU.ActiveCfg = NET40CP-Debug|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET40CP-Debug|AnyCPU.Build.0 = NET40CP-Debug|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET40CP-Release|AnyCPU.ActiveCfg = NET40CP-Release|Any CPU
+		{2234EECB-0E0C-4A7E-A2A9-6EC3DE487C13}.NET40CP-Release|AnyCPU.Build.0 = NET40CP-Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
