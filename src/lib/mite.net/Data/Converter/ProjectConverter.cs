@@ -65,7 +65,13 @@ namespace Mite
 
             project.Id = int.Parse(xmlDocument.SelectSingleNode("/project/id").InnerText, CultureInfo.InvariantCulture);
             project.Archived = bool.Parse(xmlDocument.SelectSingleNode("/project/archived").InnerText);
-            project.Budget = int.Parse(xmlDocument.SelectSingleNode("/project/budget").InnerText, CultureInfo.InvariantCulture);
+
+            // sometimes the budget is "" (empty string), so lets make sure it can be parsed
+            // I think it depends on a users access rights in mite what kind of budget information is provided
+            var budget = 0;
+            int.TryParse(xmlDocument.SelectSingleNode("/project/budget").InnerText, NumberStyles.Any, CultureInfo.InvariantCulture, out budget);
+            project.Budget = budget;
+
             project.CreatedOn = DateTime.Parse(xmlDocument.SelectSingleNode("/project/created-at").InnerText, CultureInfo.InvariantCulture);
             project.Note = xmlDocument.SelectSingleNode("/project/note").InnerText;
             project.UpdatedOn = DateTime.Parse(xmlDocument.SelectSingleNode("/project/updated-at").InnerText, CultureInfo.InvariantCulture);
