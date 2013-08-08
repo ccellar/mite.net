@@ -19,3 +19,19 @@ using (IDataContext context = new MiteDataContext(miteConfiguration))
   context.Create(project);
 }  
 ```
+## How to build
+
+If you want to restore the project after you cloned it please run:
+    
+    00_boot.bat
+ 
+This will restore all necessary packages for building the project.
+After that you could run a new build with:
+
+    02_build.bat
+    
+## Contributing
+
+ 1. `git config --global core.autocrlf false` or clone with `--config core.autocrlf=false`
+ 1. Hack!
+ 1. Make a pull request.
