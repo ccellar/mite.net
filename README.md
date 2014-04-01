@@ -35,3 +35,6 @@ After that you could run a new build with:
  1. `git config --global core.autocrlf false` or clone with `--config core.autocrlf=false`
  1. Hack!
  1. Make a pull request.
+
+## Build Status
+[![Build status](https://ci.appveyor.com/api/projects/status/s9ed7ctye1o9b66q)](https://ci.appveyor.com/project/ccellar/mite-net)
