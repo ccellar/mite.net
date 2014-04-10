@@ -69,22 +69,19 @@ Target "AssemblyInfo" (fun _ ->
 )
 
 Target "BuildAppNet20" (fun _ ->
-    !+ @"src\lib\**\*.csproj"      
-        |> Scan
+    !! @"src\lib\**\*.csproj"      
         |> MSBuild buildnet20 "Rebuild" [("Configuration","NET20-Release");]
         |> Log "Build-Output: "        
 )
 
 Target "BuildAppNet40CP" (fun _ ->
-    !+ @"src\lib\**\*.csproj"      
-        |> Scan
+    !! @"src\lib\**\*.csproj"      
         |> MSBuild buildnet40cp "Rebuild" [("Configuration","NET40CP-Release");]
         |> Log "Build-Output: "        
 )
 
 Target "BuildAppNet35CP" (fun _ ->
-    !+ @"src\lib\**\*.csproj"      
-        |> Scan
+    !! @"src\lib\**\*.csproj"      
         |> MSBuild buildnet35cp "Rebuild" [("Configuration","NET35CP-Release");]
         |> Log "Build-Output: "        
 )
@@ -112,9 +109,8 @@ Target "CreateNuGet" (fun _ ->
 
     CreateDir nugetToolsDir
 
-    !+ (buildDir @@ @"*.dll") 
+    !! (buildDir @@ @"*.dll") 
       //++ (buildDir @@ @"*.dll")   
-        |> Scan
         |> CopyTo nugetToolsDir
 
     NuGet (fun p -> 
@@ -132,9 +128,8 @@ Target "BuildZip" (fun _ ->
 
     let deployZip = deployDir @@ sprintf "%s-%s.zip" project asmVersion
 
-    !+ (buildDir @@ @"*.dll") 
+    !! (buildDir @@ @"\**\*.dll") 
       //++ (buildDir @@ @"*.dll")   
-       |> Scan
        |> Zip buildDir deployZip
 )
 
